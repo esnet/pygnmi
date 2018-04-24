@@ -208,7 +208,7 @@ if __name__ == '__main__':
     if options.tls or options.cert:
         log.debug("Create SSL Channel")
         if options.cert:
-            cred = grpc.ssl_channel_credentials(root_certificates=open(options.cert).read())
+            cred = grpc.ssl_channel_credentials(root_certificates=open(options.cert).read().encode("us-ascii"))
             opts = []
             if options.altName:
                 opts.append(('grpc.ssl_target_name_override', options.altName,))
